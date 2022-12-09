@@ -1,3 +1,35 @@
+/*
+Examples:
+    MSU_MT10T8_init_t   LCI_pins;                                               // LCI bus description structure.
+    uint8_t             *LCI2;                                                  // Pointer to LCI2 enable pin.
+    uint8_t             *pt_to_str;                                             // Pointer LCI string.
+    uint32_t            LCI_data = 0x800000FF;                                  // LCI number data.
+    uint8_t             LCI_array[MT10T8_dimention] =/
+                        {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};     // LCI string data.
+    
+    
+    LCI_pins.A0 = BB_GPIOA_PA0;                                                 // Initialization LCI bus description structure.
+    LCI_pins.D0 = BB_GPIOA_PA1;
+    LCI_pins.D1 = BB_GPIOA_PA2;
+    LCI_pins.D2 = BB_GPIOA_PA3;
+    LCI_pins.D3 = BB_GPIOA_PA4;
+    LCI_pins.WR1 = BB_GPIOA_PA5;
+    LCI_pins.WR2 = BB_GPIOA_PA6;
+
+    MSU_MT10T8(&LCI_pins, init_pins);                                           // Initialization LCI bus.
+    LCI2 = BB_GPIOA_PA7;                                                        // Choise second LCI.
+    MSU_MT10T8(&LCI_pins, init_LCI);                                            // Initialization LCI bus.
+    MSU_MT10T8(&(uint8_t)LCI_data, out_bin);                                    // Output low byte LCI_data to LCI.                 Result: 'b 11111111'.
+    MSU_MT10T8(&LCI_data, out_unsign_dec);                                      // Output LCI_data to LCI in unsign decimal format. Result: '2147483903'.
+    MSU_MT10T8(&LCI_data, out_sign_dec);                                        // Output LCI_data to LCI in sign decimal format.   Result: '      -255'.
+    MSU_MT10T8(&LCI_data, out_unsign_hex);                                      // Output LCI_data to LCI in unsign hex format.     Result: 'h 800000FF'.
+    MSU_MT10T8(&LCI_data, out_sign_hex);                                        // Output LCI_data to LCI in unsign hex format.     Result: 'h      -FF'.
+    MSU_MT10T8(&LCI_array[0], out_string);                                      // Output LCI_string to LCI.                        Result: '9876543210'.
+    pt_to_str = MSU_MT10T8(&LCI_array[0], back_string);                         // Convert string to 8-segment code string and
+                                                                                // back pointer to 8-segment code array.            Result: pt_to_str = &(uint8_t)internal_unvisible_variable.
+    MSU_MT10T8(pt_to_str, out_segment_code);                                    // Output segment_code_string to LCI.               Result: '9876543210'.
+*/
+
 #include <stdint.h>
 #define MT10T8_dimention    10      // MT10T8 character cell quantity.
 
