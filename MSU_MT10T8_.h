@@ -64,4 +64,5 @@ typedef struct
 	volatile    uint8_t     *WR2;   // Bit-band adress WR2 pin signal.
 } MSU_MT10T8_init_t;                // LCI-pins structure type.
 
+
 uint8_t     *MSU_MT10T8(void *pointer, MT10T8_purpos_t purpose);
